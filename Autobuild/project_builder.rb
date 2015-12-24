@@ -39,7 +39,7 @@ module CI
     end
 
     def run_tests(scheme_name)
-      Rake.sh "xcodebuild -workspace #{@project_workspace} -scheme '#{scheme_name}' -sdk iphonesimulator9.1 -destination \"name=iPhone 6\" test | xcpretty -t -r junit -o \"build/reports/#{scheme_name}.junit.xml\" ; exit ${PIPESTATUS[0]}"
+      Rake.sh "xcodebuild -workspace #{@project_workspace} -scheme '#{scheme_name}' -sdk iphonesimulator9.1 -destination \"name=iPhone 6\" test | xcpretty -t -r junit -o \"./build/#{scheme_name}.junit.xml\" ; exit ${PIPESTATUS[0]}"
       puts "\n\n"
     end
 
