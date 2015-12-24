@@ -1,0 +1,52 @@
+{
+  "name": "POSRx",
+  "version": "0.9.4",
+  "license": "MIT",
+  "summary": "Utilities around ReactiveCocoa.",
+  "homepage": "https://github.com/pavelosipov/POSRx",
+  "authors": {
+    "Pavel Osipov": "posipov84@gmail.com"
+  },
+  "source": {
+    "git": "https://github.com/pavelosipov/POSRx.git",
+    "tag": "0.9.4"
+  },
+  "requires_arc": true,
+  "platforms": {
+    "ios": "7.0",
+    "osx": "10.8"
+  },
+  "subspecs": [
+    {
+      "name": "Utils",
+      "source_files": "POSRx/Utils/**/*.{h,m}"
+    },
+    {
+      "name": "Scheduling",
+      "source_files": "POSRx/Scheduling/**/*.{h,m}",
+      "dependencies": {
+        "POSRx/Utils": [
+
+        ],
+        "Aspects": [
+
+        ],
+        "ReactiveCocoa": [
+          "< 3.0"
+        ]
+      }
+    },
+    {
+      "name": "Networking",
+      "source_files": [
+        "POSRx/Networking/**/*.{h,m}",
+        "POSRx/POSRx.h"
+      ],
+      "dependencies": {
+        "POSRx/Scheduling": [
+
+        ]
+      }
+    }
+  ]
+}
