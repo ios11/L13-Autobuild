@@ -45,7 +45,7 @@ module CI
     end
 
     def build_archive(scheme_name)
-      archive_path = "#{File.join archive_dir, scheme_name}.xcarchive"
+      archive_path = "#{File.join @build_dir, scheme_name}.xcarchive"
       build(scheme_name, "clean build archive -archivePath #{archive_path} CODE_SIGN_IDENTITY="" CODE_SIGNING_REQUIRED=NO")
     end
 
