@@ -39,14 +39,12 @@ module CI
     end
 
     def run_tests(scheme_name)
+      FileUtils.mkdir_p @build_dir
       Rake.sh "xcodebuild -workspace #{@project_workspace} -scheme '#{scheme_name}' -sdk iphonesimulator9.1 -destination \"name=iPhone 6\" test | xcpretty -t -r junit -o \"./build/#{scheme_name}.junit.xml\" ; exit ${PIPESTATUS[0]}"
       puts "\n\n"
     end
 
     def build_archive(scheme_name)
-      archive_dir = @build_dir
-      FileUtils.rm_rf archive_dir
-      FileUtils.mkdir_p archive_dir
       archive_path = "#{File.join archive_dir, scheme_name}.xcarchive"
       build(scheme_name, "clean build archive -archivePath #{archive_path} CODE_SIGN_IDENTITY="" CODE_SIGNING_REQUIRED=NO")
     end
